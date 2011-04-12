@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+use lib 'lib';
+use strict;
+use warnings;
+use MonIt;
+use Data::Dumper;
+
+my $target = shift;
+
+my $mon = MonIt->new();
+
+my $check = $mon->check($target);
+if(! $check){
+    print "ERROR: [$target] ". $mon->error;
+    exit 1;
+}
+
+print "Check to $target took: ".$check->{time}."\n";
