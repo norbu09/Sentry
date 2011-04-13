@@ -19,6 +19,7 @@ requires 'Config::GitLike';
 requires 'Sys::Hostname';
 
 auto_install;
+install_script 'bin/checkit';
 
 WriteAll;
 
