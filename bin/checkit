@@ -7,10 +7,23 @@ use Sentry;
 use Data::Dumper;
 use Config::GitLike;
 
-my $conf = 'sentry.conf';
+my $conf = 'sentry/sentry.conf';
 
 my $c = Config::GitLike->new( confname => $conf );
 $c->load;
+
+foreach my $file (@{$c->config_files}){
+    my @conf_path = split(/\//, $file);
+    pop(@conf_path);
+    push(@conf_path, 'conf.d');
+    my $path = join('/', @conf_path);
+    if(-d $path){
+        my @files = glob $path.'/*';
+        foreach my $cc (@files){
+            $c->load_file($cc);
+        }
+    }
+}
 
 my $checks = $c->get_regexp( key => 'check.*plugin' );
 

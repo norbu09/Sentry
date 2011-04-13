@@ -19,6 +19,7 @@ around 'notify' => sub {
 
     return unless $self->last_response;
     return unless $self->last_response->{time};
+    return unless -S $self->collectd_socket;
 
     my $sock = Collectd::Unixsock->new( $self->collectd_socket );
 
