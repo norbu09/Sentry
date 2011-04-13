@@ -13,7 +13,7 @@ Sentry - The great new Sentry!
 
 =head1 VERSION
 
-Version 0.01.01.01.01
+Version 0.01.01.01.01.01
 
 =cut
 
