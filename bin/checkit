@@ -5,19 +5,42 @@ use strict;
 use warnings;
 use Sentry;
 use Data::Dumper;
+use Config::GitLike;
 
-my $target = shift;
+my $conf = 'sentry.conf';
 
-my $mon = Sentry->new({debug => 1});
-$mon->load_plugin('Backend::Prowl');
-$mon->prowl_apikeys(['b30c06b65fa7dba2394a1e5e6bae1546d6c1c123']);
+my $c = Config::GitLike->new( confname => $conf );
+$c->load;
 
-my $check = $mon->check($target);
-$mon->notify();
+my $checks = $c->get_regexp( key => 'check.*plugin' );
 
-if(! $check){
-#    print "ERROR: [$target] ". $mon->error;
-    exit 1;
+foreach my $path ( keys %{$checks} ) {
+
+    my $mon = Sentry->new();
+    if ( my $notify = $c->get( key => 'notify.plugin' ) ) {
+        $mon->load_plugin( 'Backend::' . $notify );
+    }
+    if ( my $keys = $c->get( key => 'notify.Prowl.keys' ) ) {
+        $mon->prowl_apikeys( [ split( /,/, $keys ) ] );
+    }
+
+    my @parts = split( /\./, $path );
+    pop(@parts);
+    print "testing " . $parts[1] . "...\n";
+    my $opts = $c->get_regexp( key => join( '.', @parts ) );
+    foreach my $ky ( keys %{$opts} ) {
+        my @p = split( /\./, $ky );
+        my $nk = pop(@p);
+        $opts->{$nk} = delete $opts->{$ky};
+    }
+    my $check = $mon->check( $checks->{$path}, $opts );
+
+    $mon->notify();
+    if ( !$check ) {
+        print "ERROR: [$path] " . $mon->error . "\n";
+        $mon->error('');
+    }
+    else {
+        print "Check to $path took: " . $check->{time} . "\n";
+    }
 }
-
-print "Check to $target took: ".$check->{time}."\n";
