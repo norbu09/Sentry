@@ -2,20 +2,10 @@ bin/checkit
 Changes
 etc/sentry.conf
 ignore.txt
-inc/Module/AutoInstall.pm
-inc/Module/Install.pm
-inc/Module/Install/AutoInstall.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Include.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/Sentry.pm
-lib/Sentry/Plugin/Backend/Prowl.pm
 lib/Sentry/Plugin/Backend/Collectd.pm
+lib/Sentry/Plugin/Backend/Prowl.pm
+lib/Sentry/Plugin/Check/CouchDB.pm
 lib/Sentry/Plugin/Check/RabbitMQ.pm
 Makefile.PL
 MANIFEST			This list of files

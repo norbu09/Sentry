@@ -13,15 +13,15 @@ Sentry - The great new Sentry!
 
 =head1 VERSION
 
-Version 0.2.2.01.01.01.01.01
+Version 0.3.3.2.2.01.01.01.01.01
 
 =cut
 
-our $VERSION = '0.2';
+our $VERSION = '0.3';
 
 has 'debug' => (is => 'rw', isa => 'Bool', default => 0, predicate => 'is_debug');
 has 'plugin' => (is => 'rw', isa => 'Str');
-has 'last_response' => (is => 'rw', isa => 'Str');
+has 'last_response' => (is => 'rw', isa => 'HashRef');
 has 'hostname' => (is => 'rw', isa => 'Str', default => hostname());
 has 'error' => (is => 'rw', isa => 'Str', predicate => 'has_error');
 
