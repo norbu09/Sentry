@@ -13,11 +13,11 @@ Sentry - The great new Sentry!
 
 =head1 VERSION
 
-Version 0.01.01.01.01.01
+Version 0.2.2.01.01.01.01.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.2';
 
 has 'debug' => (is => 'rw', isa => 'Bool', default => 0, predicate => 'is_debug');
 has 'plugin' => (is => 'rw', isa => 'Str');

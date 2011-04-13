@@ -1,5 +1,8 @@
 Revision history for Sentry
 
+0.2     2011-04-13T15:32:03
+        added a collectd plugin
+
 0.01    Date/time
-        First version, released on an unsuspecting world.
+        initial import of the monitoring
 
