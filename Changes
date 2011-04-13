@@ -1,5 +1,10 @@
 Revision history for Sentry
 
+0.4     2011-04-13T16:39:06
+        make it behave nicer as a real program
+        - parses .conf.d config subdirectories
+        - installs checkit into a /bin directory
+
 0.3     2011-04-13T15:43:18
         added the couchdb plugin
 
