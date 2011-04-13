@@ -67,7 +67,7 @@ around 'notify' => sub {
 
     if ( $self->has_error ) {
         my $message = "Host:  " . $self->hostname . "\n";
-        $message .= "Check: " . $self->running . "\n";
+        $message .= "Check: " . $self->plugin . "\n";
         $message .= "Error: ";
         $message .= $self->error;
         $message .= "\n======\n";

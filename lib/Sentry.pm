@@ -20,7 +20,8 @@ Version 0.01.01.01.01.01
 our $VERSION = '0.01';
 
 has 'debug' => (is => 'rw', isa => 'Bool', default => 0, predicate => 'is_debug');
-has 'running' => (is => 'rw', isa => 'Str');
+has 'plugin' => (is => 'rw', isa => 'Str');
+has 'last_response' => (is => 'rw', isa => 'Str');
 has 'hostname' => (is => 'rw', isa => 'Str', default => hostname());
 has 'error' => (is => 'rw', isa => 'Str', predicate => 'has_error');
 
@@ -49,7 +50,7 @@ if you don't export anything, such as for a purely object-oriented module.
 sub check {
     my ($self, $check, $data) = @_;
 
-    $self->running($check);
+    $self->plugin($check);
     my $test = 'Check::'.ucfirst($check);
     eval ($self->load_plugin($test));
     if($@){
@@ -57,7 +58,8 @@ sub check {
         return;
     }   
     
-    return $self->test($data);
+    $self->last_response($self->test($data));
+    return $self->last_response;
 }
 
 =head2 test

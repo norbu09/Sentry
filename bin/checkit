@@ -17,11 +17,17 @@ my $checks = $c->get_regexp( key => 'check.*plugin' );
 foreach my $path ( keys %{$checks} ) {
 
     my $mon = Sentry->new();
-    if ( my $notify = $c->get( key => 'notify.plugin' ) ) {
-        $mon->load_plugin( 'Backend::' . $notify );
+    if ( my @notify = $c->get_all( key => 'notify.plugin' ) ) {
+        foreach my $plugin (@notify) {
+            $mon->load_plugin( 'Backend::' . $plugin );
+        }
     }
-    if ( my $keys = $c->get( key => 'notify.Prowl.keys' ) ) {
-        $mon->prowl_apikeys( [ split( /,/, $keys ) ] );
+    if ( my @keys = $c->get_all( key => 'notify.Prowl.key' ) ) {
+        $mon->prowl_apikeys(\@keys);
+    }
+
+    if ( my $socket = $c->get( key => 'notify.Collectd.socket' ) ) {
+        $mon->collectd_socket($socket);
     }
 
     my @parts = split( /\./, $path );
