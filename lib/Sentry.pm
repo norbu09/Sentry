@@ -1,8 +1,9 @@
-package MonIt;
+package Sentry;
 
 use strict;
 use warnings;
 use Mouse;
+use Sys::Hostname;
 
 with 'MouseX::Object::Pluggable';
 
@@ -18,7 +19,9 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-has 'debug' => (is => 'rw', isa => 'Bool', default => 0);
+has 'debug' => (is => 'rw', isa => 'Bool', default => 0, predicate => 'is_debug');
+has 'running' => (is => 'rw', isa => 'Str');
+has 'hostname' => (is => 'rw', isa => 'Str', default => hostname());
 has 'error' => (is => 'rw', isa => 'Str', predicate => 'has_error');
 
 =head1 SYNOPSIS
@@ -46,6 +49,7 @@ if you don't export anything, such as for a purely object-oriented module.
 sub check {
     my ($self, $check, $data) = @_;
 
+    $self->running($check);
     my $test = 'Check::'.ucfirst($check);
     eval ($self->load_plugin($test));
     if($@){
@@ -63,6 +67,18 @@ the test stub function the Check plugins have to override
 =cut
 
 sub test {
+    my ($self, $data) = @_;
+
+    return;
+}
+
+=head2 notify
+
+the test stub function the Check plugins have to override
+
+=cut
+
+sub notify {
     my ($self, $data) = @_;
 
     return;

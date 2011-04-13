@@ -3,16 +3,20 @@
 use lib 'lib';
 use strict;
 use warnings;
-use MonIt;
+use Sentry;
 use Data::Dumper;
 
 my $target = shift;
 
-my $mon = MonIt->new();
+my $mon = Sentry->new({debug => 1});
+$mon->load_plugin('Backend::Prowl');
+$mon->prowl_apikeys(['b30c06b65fa7dba2394a1e5e6bae1546d6c1c123']);
 
 my $check = $mon->check($target);
+$mon->notify();
+
 if(! $check){
-    print "ERROR: [$target] ". $mon->error;
+#    print "ERROR: [$target] ". $mon->error;
     exit 1;
 }
 

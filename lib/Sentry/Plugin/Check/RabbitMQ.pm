@@ -1,4 +1,4 @@
-package MonIt::Plugin::Check::RabbitMQ;
+package Sentry::Plugin::Check::RabbitMQ;
 
 use Mouse::Role;
 use IO::Socket;
