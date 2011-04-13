@@ -9,11 +9,11 @@ with 'MouseX::Object::Pluggable';
 
 =head1 NAME
 
-MonIt - The great new MonIt!
+Sentry - The great new Sentry!
 
 =head1 VERSION
 
-Version 0.01
+Version 0.01.01.01.01
 
 =cut
 
@@ -30,9 +30,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use MonIt;
+    use Sentry;
 
-    my $foo = MonIt->new();
+    my $foo = Sentry->new();
     ...
 
 =head1 EXPORT
@@ -91,7 +91,7 @@ Lenz Gschwendtner, C<< <norbu09 at cpan.org> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-monit at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MonIt>.  I will be notified, and then you'll
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Sentry>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -101,7 +101,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc MonIt
+    perldoc Sentry
 
 
 You can also look for information at:
@@ -110,19 +110,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=MonIt>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Sentry>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/MonIt>
+L<http://annocpan.org/dist/Sentry>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/MonIt>
+L<http://cpanratings.perl.org/d/Sentry>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/MonIt/>
+L<http://search.cpan.org/dist/Sentry/>
 
 =back
 
@@ -143,4 +143,4 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of MonIt
+1; # End of Sentry

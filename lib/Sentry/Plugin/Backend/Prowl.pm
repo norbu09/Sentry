@@ -21,7 +21,7 @@ has 'prowl_app' => (
     isa      => 'Str',
     required => 1,
     lazy => 1,
-    default  => 'MonIt'
+    default  => 'Sentry'
 );
 
 has 'prowl_prio' => (
