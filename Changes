@@ -1,5 +1,8 @@
 Revision history for Sentry
 
+0.6.1   2011-04-15T15:50:12
+        include inc/ dir...
+
 0.6     2011-04-15T15:27:23
         make module shipit ready
 
