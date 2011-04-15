@@ -24,13 +24,12 @@ around 'notify' => sub {
     my $sock = Collectd::Unixsock->new( $self->collectd_socket );
 
     my $id = {
-        host => $self->hostname, 
-        plugin => $self->plugin, 
-        type => 'latency', 
     };
 
     $sock->putval(
-        $id,
+        host   => $self->hostname,
+        plugin => $self->plugin,
+        type   => 'latency',
         time   => time(),
         values => [ $self->last_response->{time} ]
     );

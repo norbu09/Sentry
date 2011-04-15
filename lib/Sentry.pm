@@ -22,7 +22,7 @@ our $VERSION = '0.6.1';
 has 'debug' => (is => 'rw', isa => 'Bool', default => 0, predicate => 'is_debug');
 has 'plugin' => (is => 'rw', isa => 'Str');
 has 'last_response' => (is => 'rw', isa => 'HashRef');
-has 'hostname' => (is => 'rw', isa => 'Str', default => hostname());
+has 'hostname' => (is => 'rw', isa => 'Str', default => [ split(/\./, hostname(), 2) ]->[0] );
 has 'error' => (is => 'rw', isa => 'Str', predicate => 'has_error');
 
 =head1 SYNOPSIS
