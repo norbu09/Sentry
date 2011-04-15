@@ -1,5 +1,9 @@
 Revision history for Sentry
 
+0.6.2   2011-04-15T17:29:32
+        fixed collectd plugin
+        use short hostname
+
 0.6.1   2011-04-15T15:50:12
         include inc/ dir...
 
