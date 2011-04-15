@@ -1,5 +1,9 @@
 Revision history for Sentry
 
+0.6.3   2011-04-15T18:24:29
+        fixed Prowl notification
+        more debug output
+
 0.6.2   2011-04-15T17:29:32
         fixed collectd plugin
         use short hostname
