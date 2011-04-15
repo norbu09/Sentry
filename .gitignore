@@ -11,5 +11,5 @@ cover_db
 .vimbk
 *.swp
 *.swo
-MANIFEST.SKIP
 .shipit
+META.yml
