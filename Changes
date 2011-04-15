@@ -1,5 +1,8 @@
 Revision history for Sentry
 
+0.5     2011-04-15T15:13:02
+        added Module::Install support
+
 0.4     2011-04-13T16:39:06
         make it behave nicer as a real program
         - parses .conf.d config subdirectories
