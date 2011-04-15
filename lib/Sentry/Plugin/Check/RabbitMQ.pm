@@ -19,6 +19,7 @@ around 'test' => sub {
         PeerAddr => $host,
         PeerPort => $port,
     ) or $self->error("Could not connect to ".$host.':'.$port);
+
     return if $self->has_error;
 
     print $sock "AMQP\001\001\b\000";
@@ -31,6 +32,7 @@ around 'test' => sub {
     if($res =~ m/rabbitmq/i){
         return {code => 200, time => tv_interval($t0),};
     }
+    $self->error("unexpected answer: " . $host . ':' . $port . ' ' . $res);
 
 };
 

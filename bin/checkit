@@ -32,7 +32,8 @@ foreach my $path ( keys %{$checks} ) {
     my $mon = Sentry->new();
     if ( my @notify = $c->get_all( key => 'notify.plugin' ) ) {
         foreach my $plugin (@notify) {
-            $mon->load_plugin( 'Backend::' . $plugin );
+            $mon->load_plugin( 'Backend::' . $plugin);
+            print "loaded Backend::$plugin\n";
         }
     }
     if ( my @keys = $c->get_all( key => 'notify.Prowl.key' ) ) {
@@ -57,7 +58,6 @@ foreach my $path ( keys %{$checks} ) {
     $mon->notify();
     if ( !$check ) {
         print "ERROR: [$path] " . $mon->error . "\n";
-        $mon->error('');
     }
     else {
         print "Check to $path took: " . $check->{time} . "\n";

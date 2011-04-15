@@ -56,8 +56,8 @@ sub check {
     if($@){
         $self->error = "Could not load test definition: $test";
         return;
-    }   
-    
+    }
+
     $self->last_response($self->test($data));
     return $self->last_response;
 }
@@ -95,9 +95,6 @@ Lenz Gschwendtner, C<< <norbu09 at cpan.org> >>
 Please report any bugs or feature requests to C<bug-monit at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Sentry>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
