@@ -1,5 +1,8 @@
 Revision history for Sentry
 
+0.6     2011-04-15T15:27:23
+        make module shipit ready
+
 0.5     2011-04-15T15:13:02
         added Module::Install support
 
